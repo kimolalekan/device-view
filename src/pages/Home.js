@@ -74,10 +74,6 @@ export default class Home extends Component {
 
         <Container>
           <form className="row" onSubmit={this.handleUri.bind(this)}>
-            <div className="navigation">
-              <button type="button">&larr;</button>
-              <button type="button">&rarr;</button>
-            </div>
             <div className="browser">
               <input
                 className="url"
