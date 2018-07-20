@@ -103,6 +103,32 @@ body {
     margin-top: 30px;
   }
 
+  .settings {
+    select {
+      padding: 20px !important;
+      border: 1px solid #ccc;
+      border-radius: 0 !important;
+      font-size: 16px;
+      margin: 10px;
+      margin-top: 30px;
+      height: 40px;
+    }
+    button {
+      padding: 10px !important;
+      border: 1px solid #ccc;
+      border-radius: 0 !important;
+      font-size: 16px;
+      font-weight: normal !important;
+      margin: 10px;
+      margin-top: 30px;
+      height: 20px;
+
+      &.active {
+        background: #efeff4;
+      }
+    }
+  }
+
   footer {
     border-top: 1px solid #ccc;
     color: #444;
@@ -112,15 +138,6 @@ body {
     a {
       text-decoration: none;
     }
-  }
-
-  select {
-    padding: 20px !important;
-    border: 1px solid #ccc;
-    border-radius: 0 !important;
-    font-size: 16px;
-    margin: 10px;
-    margin-top: 30px;
   }
 
   button {

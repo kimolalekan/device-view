@@ -23,6 +23,18 @@ export default class Home extends Component {
     this.store.setColor(value);
   }
 
+  handlePortrait() {
+    this.store.setOrientation(false);
+    this.store.setLandscape("");
+    this.store.setPortrait("active");
+  }
+
+  handleLandscape() {
+    this.store.setOrientation(true);
+    this.store.setLandscape("active");
+    this.store.setPortrait("");
+  }
+
   handleUri(e) {
     e.preventDefault();
     let value = document.querySelector(".url").value;
@@ -34,7 +46,14 @@ export default class Home extends Component {
   }
 
   render() {
-    const { name, color, url } = this.store;
+    const {
+      name,
+      color,
+      url,
+      orientation,
+      activePortrait,
+      activeLandspace
+    } = this.store;
     return (
       <div className="page home">
         <a
@@ -87,41 +106,61 @@ export default class Home extends Component {
             </div>
           </form>
 
-          <select onChange={this.handleName.bind(this)}>
-            <option value="">Choose device</option>
-            <option value="iphone-x">iPhone X</option>
-            <option value="iphone-8" selected>
-              iPhone 8
-            </option>
-            <option value="iphone-8plus">iPhone 8 Plus</option>
-            <option value="iphone-5s">iPhone 5S</option>
-            <option value="iphone-5c">iPhone 5c</option>
-            <option value="iphone-4s">iPhone 4s</option>
-            <option value="ipad-mini">iPad Mini</option>
-            <option value="nexus-5">Nexus 5</option>
-            <option value="galaxy-s5">Galaxy S5</option>
-            <option value="galaxy-note8">Galaxy Note8</option>
-            <option value="htc-one">HTC One</option>
-            <option value="lumia-920">Lumia 920</option>
-            <option value="macbook-pro">MacBook Pro</option>
-          </select>
+          <div className="settings">
+            <select onChange={this.handleName.bind(this)}>
+              <option value="">Choose device</option>
+              <option value="iphone-x">iPhone X</option>
+              <option value="iphone-8" selected>
+                iPhone 8
+              </option>
+              <option value="iphone-8plus">iPhone 8 Plus</option>
+              <option value="iphone-5s">iPhone 5S</option>
+              <option value="iphone-5c">iPhone 5c</option>
+              <option value="iphone-4s">iPhone 4s</option>
+              <option value="ipad-mini">iPad Mini</option>
+              <option value="nexus-5">Nexus 5</option>
+              <option value="galaxy-s5">Galaxy S5</option>
+              <option value="galaxy-note8">Galaxy Note8</option>
+              <option value="htc-one">HTC One</option>
+              <option value="lumia-920">Lumia 920</option>
+              <option value="macbook-pro">MacBook Pro</option>
+            </select>
 
-          <select onChange={this.handleColor.bind(this)}>
-            <option>Choose color</option>
-            <option value="gold" selected>
-              Gold
-            </option>
-            <option value="silver">Silver</option>
-            <option value="white">White</option>
-            <option value="black">Black</option>
-            <option value="blue">Blue</option>
-            <option value="green">Green</option>
-            <option value="red">Red</option>
-            <option value="yellow">Yellow</option>
-          </select>
+            <select onChange={this.handleColor.bind(this)}>
+              <option>Choose color</option>
+              <option value="gold" selected>
+                Gold
+              </option>
+              <option value="silver">Silver</option>
+              <option value="white">White</option>
+              <option value="black">Black</option>
+              <option value="blue">Blue</option>
+              <option value="green">Green</option>
+              <option value="red">Red</option>
+              <option value="yellow">Yellow</option>
+            </select>
+
+            <button
+              className={`${activePortrait}`}
+              onClick={this.handlePortrait.bind(this)}
+            >
+              Portrait
+            </button>
+            <button
+              className={`${activeLandspace}`}
+              onClick={this.handleLandscape.bind(this)}
+            >
+              Landscape
+            </button>
+          </div>
 
           <div className="device-view">
-            <Device name={name} color={color} url={url} />
+            <Device
+              name={name}
+              color={color}
+              url={url}
+              landscape={orientation}
+            />
           </div>
 
           <footer>
